@@ -74,7 +74,10 @@ const handleCheckboxChange = async (student, date, present, groupId, query) => {
             await api.post(`/admin/check-attendance/${groupId}`, { student, date, present });
             await bot.answerCallbackQuery(query.id, { text: `Davomat yangilandi!` });
         }
-        catch (error) { bot.answerCallbackQuery(query.id, { text: `Davomatni yangilab bo'lmadi!` }) }
+        catch (error) {
+            winston.error(error);
+            bot.answerCallbackQuery(query.id, { text: `Davomatni yangilab bo'lmadi!` });
+        }
     } catch (error) {
         console.error("Error updating attendance:", error.response?.data.message || error.message);
     }

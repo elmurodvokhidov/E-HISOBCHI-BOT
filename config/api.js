@@ -1,3 +1,3 @@
 const axios = require('axios');
-const api = axios.create({ baseURL: "http://backend.e-hisobchi.uz/api" });
+const api = axios.create({ baseURL: "https://backend.e-hisobchi.uz/api" });
 module.exports = api;
